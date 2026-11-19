@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTBRIDGE | Technology and Innovation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Light Mode */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #263449;
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            background: white;
+            padding: 18px 0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #123c80;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px;
+        }
+
+        nav a {
+            color: #123c80;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* Dark Mode Button */
+        #themeButton {
+            background: #123c80;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #themeButton:hover {
+            background: #2563eb;
+        }
+
+        .hero {
+            background: #e8f1ff;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .hero h1 {
+            color: #123c80;
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #52627a;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 11px 20px;
+            margin: 20px 8px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #123c80;
+        }
+
+        section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #123c80;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .content-box h3 {
+            color: #123c80;
+            margin-bottom: 10px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        video,
+        iframe {
+            width: 100%;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        video {
+            display: block;
+            background: #111827;
+        }
+
+        .pdf-viewer {
+            height: 450px;
+        }
+
+        .youtube-video {
+            aspect-ratio: 16 / 9;
+        }
+
+        .map {
+            height: 350px;
+        }
+
+        footer {
+            background: #102c5c;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer a {
+            color: #facc15;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #121826;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode header {
+            background: #1e293b;
+            border-bottom: 2px solid #334155;
+        }
+
+        body.dark-mode .logo,
+        body.dark-mode nav a {
+            color: #93c5fd;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .hero {
+            background: #1e293b;
+        }
+
+        body.dark-mode .hero h1,
+        body.dark-mode .section-title,
+        body.dark-mode .content-box h3 {
+            color: #93c5fd;
+        }
+
+        body.dark-mode .hero p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .content-box {
+            background: #1e293b;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode footer {
+            background: #080f1e;
+        }
+
+        @media (max-width: 700px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .pdf-viewer {
+                height: 350px;
+            }
+
+            .map {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#home" class="logo">BOTBRIDGE</a>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About Botbridge</a>
+                <a href="#documents">Documents</a>
+                <a href="#audio">Audio</a>
+                <a href="#videos">Videos</a>
+                <a href="#location">Location</a>
+                <a href="#contact">Contact Us</a>
+
+                <button id="themeButton" onclick="toggleTheme()">
+                    🌙 Dark Mode
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Home -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Welcome to Botbridge</h1>
+                <p>
+                    Connecting people, ideas and technology through
+                    learning, creativity and innovation.
+                </p>
+
+                <a href="#about" class="button">Learn More</a>
+                <a href="#documents" class="button">View Documents</a>
+            </div>
+        </section>
+
+        <!-- About Botbridge -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Botbridge</h2>
+
+                <div class="two-columns">
+                    <div class="content-box">
+                        <h3>What is Botbridge?</h3>
+                        <p>
+                            Botbridge is a technology and innovation concept
+                            that connects people with ideas, information and
+                            digital tools. The word "Bot" represents intelligent
+                            software and automation, while "Bridge" represents
+                            connection and collaboration.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3>Purpose and Objectives</h3>
+                        <p>
+                            Botbridge aims to make technology easier to
+                            understand, encourage creative thinking, share
+                            useful information and support practical digital
+                            solutions.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3>Our Mission</h3>
+                        <p>
+                            To connect knowledge, creativity and technology
+                            and make digital solutions more useful and
+                            accessible.
+                        </p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3>Our Vision</h3>
+                        <p>
+                            To become a trusted connection point for people,
+                            ideas and future technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents -->
+        <section id="documents">
+            <div class="container">
+                <h2 class="section-title">Botbridge Document</h2>
+
+                <div class="content-box">
+                    <h3>Understanding Botbridge – Concepts, Vision and Technology</h3>
+                    <p>
+                        Read the PDF below or download a copy to your device.
+                    </p>
+
+                    <iframe
+                        class="pdf-viewer"
+                        src="understanding-botbridge.pdf"
+                        title="Understanding Botbridge PDF">
+                    </iframe>
+
+                    <a class="button"
+                       href="understanding-botbridge.pdf"
+                       download>
+                        Download Botbridge PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio -->
+        <section id="audio">
+            <div class="container">
+                <h2 class="section-title">Welcome Audio</h2>
+
+                <div class="content-box">
+                    <p>Listen to the Botbridge welcome message.</p>
+
+                    <audio controls>
+                        <source src="welcome-to-botbridge.mp3" type="audio/mpeg">
+                        Your browser does not support audio playback.
+                    </audio>
+
+                    <a class="button"
+                       href="welcome-to-botbridge.mp3"
+                       download>
+                        Download Audio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos -->
+        <section id="videos">
+            <div class="container">
+                <h2 class="section-title">Botbridge Videos</h2>
+
+                <div class="two-columns">
+                    <div class="content-box">
+                        <h3>Botbridge Promotional Video</h3>
+
+                        <video controls poster="botbridge-video-poster.jpg">
+                            <source src="botbridge-intro.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+
+                        <a class="button"
+                           href="botbridge-intro.mp4"
+                           download>
+                            Download Video
+                        </a>
+                    </div>
+
+                    <div class="content-box">
+                        <h3>Understanding Digital Technology</h3>
+
+                        <iframe
+                            class="youtube-video"
+                            src="https://www.youtube-nocookie.com/embed/4X4NjiwN1mY"
+                            title="Digitalisation explainer video"
+                            loading="lazy"
+                            allowfullscreen>
+                        </iframe>
+
+                        <p>
+                            A related video explaining digital technology
+                            and digitalisation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location -->
+        <section id="location">
+            <div class="container">
+                <h2 class="section-title">Our Location</h2>
+
+                <div class="content-box">
+                    <p>
+                        Replace BOTBRIDGE LOCATION in the map URL with
+                        your actual address or place name.
+                    </p>
+
+                    <iframe
+                        class="map"
+                        src="https://www.google.com/maps?q=BOTBRIDGE%20LOCATION&output=embed"
+                        title="Botbridge location map"
+                        loading="lazy"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+
+                <div class="content-box">
+                    <p>
+                        Thank you for visiting Botbridge. Add your official
+                        email address or contact details here.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h2>BOTBRIDGE</h2>
+        <p>Technology | Creativity | Innovation</p>
+
+        <p>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#documents">Documents</a>
+            <a href="#videos">Videos</a>
+            <a href="#contact">Contact</a>
+        </p>
+
+        <p>© 2026 BOTBRIDGE. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+        // Dark Mode and Light Mode Function
+
+        function toggleTheme() {
+
+            document.body.classList.toggle("dark-mode");
+
+            let button = document.getElementById("themeButton");
+
+            if (document.body.classList.contains("dark-mode")) {
+
+                button.innerHTML = "☀️ Light Mode";
+
+                localStorage.setItem("theme", "dark");
+
+            } else {
+
+                button.innerHTML = "🌙 Dark Mode";
+
+                localStorage.setItem("theme", "light");
+
+            }
+
+        }
+
+        // Save and Load Theme
+
+        window.onload = function() {
+
+            let savedTheme = localStorage.getItem("theme");
+
+            let button = document.getElementById("themeButton");
+
+            if (savedTheme === "dark") {
+
+                document.body.classList.add("dark-mode");
+
+                button.innerHTML = "☀️ Light Mode";
+
+            }
+
+        };
+
+    </script>
+
+</body>
+</html>
